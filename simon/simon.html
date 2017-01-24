@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Simon</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron:900" rel="stylesheet">
+    <style>
+        div {
+            float: left;
+            margin: 5px;
+            background-color: slategray;
+        }
+        
+        .titleHead {
+            width: 50%;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 50px;
+            text-align: center;
+            margin-left: 25%;
+            margin-right: 25%;
+        }
+        
+        #simon {
+            width: 55%;
+            margin: 10px;
+            margin-left: 25%;
+            margin-right: 25%;
+            margin-top: 50px;
+        }
+        
+        #bombillaVerde {
+            float: left;
+            width: 45%;
+        }
+        
+        #bombillaRoja {
+            float: right;
+            width: 45%;
+        }
+        
+        #bombillaAmarilla {
+            float: left;
+            width: 45%;
+        }
+        
+        #bombillaAzul {
+            float: right;
+            width: 45%;
+        }
+        
+        #tablero {
+            width: 48%;
+        }
+        
+        #marcador {
+            float: right;
+            width: 48%;
+        }
+        
+        #botonera {
+            display: block;
+            width: 100%;
+        }
+        
+        button {
+            margin-top: 20px;
+            margin-left: 45%;
+        }
+        
+        #playerName {
+            margin-left: 38%;
+            margin-top: 20px;
+        }
+        
+        .botonJuego {
+            cursor: pointer;
+        }
+        
+        #dificultad {
+            width: 75%;
+            margin-left: 25%;
+            align-items: center;
+        }
+        
+        #tituloDificultad {
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            display: block;
+            width: 63%;
+            margin-bottom: 10px;
+        }
+        
+        #rangeDifficulty {}
+        
+        #numberDifficulty {
+            width: 30px;
+        }
+        
+        #answers {
+            float: left;
+            width: 45%;
+        }
+        
+        .positionAnswer {
+            float: left;
+            width: 98%;
+            background-color: red;
+        }
+        
+        #trueValues {
+            width: 45%;
+            float: right;
+        }
+        
+        .positionTrue {
+            float: right;
+            width: 98%;
+            background-color: blue;
+        }
+        
+        .littlelHead {
+            text-align: center;
+        }
+        
+        .greenOn {
+            margin: 0;
+            border: 10px solid black;
+            padding: 20%;
+            background: black;
+            width: 0px;
+            height: 0px;
+            border-radius: 360px 0px 0px 0px;
+            background-image: radial-gradient(circle at 100% 100%, rgba(204, 0, 0, 0) 14px, green 15px);
+        }
+        
+        .greenOff {
+            margin: 0;
+            border: 10px solid black;
+            padding: 20%;
+            background: black;
+            width: 0px;
+            height: 0px;
+            border-radius: 360px 0px 0px 0px;
+            background-image: radial-gradient(circle at 100% 100%, rgba(204, 0, 0, 0) 14px, darkgreen 15px);
+        }
+        
+        .redOn {
+            margin: 0;
+            border: 10px solid black;
+            padding: 20%;
+            background: black;
+            width: 0px;
+            height: 0px;
+            border-radius: 0px 360px 0px 0px;
+            background-image: radial-gradient(circle at 0% 100%, rgba(204, 0, 0, 0) 14px, red 15px);
+        }
+        
+        .redOff {
+            margin: 0;
+            border: 10px solid black;
+            padding: 20%;
+            background: black;
+            width: 0px;
+            height: 0px;
+            border-radius: 0px 360px 0px 0px;
+            background-image: radial-gradient(circle at 0% 100%, rgba(204, 0, 0, 0) 14px, darkred 15px);
+        }
+        
+        .blueOn {
+            margin: 0;
+            border: 10px solid black;
+            padding: 20%;
+            background: black;
+            width: 0px;
+            height: 0px;
+            border-radius: 0px 0px 0px 360px;
+            background-image: radial-gradient(circle at 100% 0%, rgba(204, 0, 0, 0) 14px, blue 15px);
+        }
+        
+        .blueOff {
+            margin: 0;
+            border: 10px solid black;
+            padding: 20%;
+            background: black;
+            width: 0px;
+            height: 0px;
+            border-radius: 0px 0px 0px 360px;
+            background-image: radial-gradient(circle at 100% 0%, rgba(204, 0, 0, 0) 14px, darkblue 15px);
+        }
+        
+        .yellowOn {
+            margin: 0;
+            border: 10px solid black;
+            padding: 20%;
+            background: black;
+            width: 0px;
+            height: 0px;
+            border-radius: 0px 0px 360px 0px;
+            background-image: radial-gradient(circle at 0% 0%, rgba(204, 0, 0, 0) 14px, yellow 15px);
+        }
+        
+        .yellowOff {
+            margin: 0;
+            border: 10px solid black;
+            padding: 20%;
+            background: black;
+            width: 0px;
+            height: 0px;
+            border-radius: 0px 0px 360px 0px;
+            background-image: radial-gradient(circle at 0% 0%, rgba(204, 0, 0, 0) 14px, goldenrod 15px);
+        }
+        
+        #nivel {
+            position: absolute;
+            top: 220px;
+            left: 262px;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            background: black;
+            border: 3px solid silver;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="tablero">
+        <div id="titleGame" class="titleHead">Simon</div>
+        <div id="simon">
+            <div id="green" class="greenOff"></div>
+            <div id="red" class="redOff"></div>
+            <div id="blue" class="blueOff"></div>
+            <div id="yellow" class="yellowOff"></div>
+        </div>
+        <div id="botonera">
+            <div id="dificultad">
+                <span id="tituloDificultad">Dificultad</span>
+                <input type="range" name="difficulty" id="rangeDifficulty" value="5" min="5" max="50" onchange="updateValue(this.type,this.value)">
+                <input type="number" name="difficulty" id="numberDifficulty" value="5" min="5" max="50" onchange="updateValue(this.type,this.value)">
+            </div>
+            <button type="button" onclick="startGame()">JUGAR</button>
+            <input id="playerName" type="text" value="Jonh Doe">
+        </div>
+    </div>
+    <div id="marcador">
+        <div id="tittleMarcador" class="titleHead">Marcador</div>
+        <div id="answers">
+            <h1 class="littlelHead">Tu secuencia</h1>
+            <div class="positionAnswer">1
+            </div>
+            <div class="positionAnswer">2
+            </div>
+            <div class="positionAnswer">3
+            </div>
+            <div class="positionAnswer">4
+            </div>
+            <div class="positionAnswer">5
+            </div>
+            <div class="positionAnswer">6
+            </div>
+            <div class="positionAnswer">7
+            </div>
+            <div class="positionAnswer">8
+            </div>
+            <div class="positionAnswer">9
+            </div>
+            <div class="positionAnswer">10
+            </div>
+        </div>
+        <div id="trueValues">
+            <h1 class="littlelHead">Secuencia Correcta</h1>
+            <div class="positionTrue">1
+            </div>
+            <div class="positionTrue">2
+            </div>
+            <div class="positionTrue">3
+            </div>
+            <div class="positionTrue">4
+            </div>
+            <div class="positionTrue">5
+            </div>
+            <div class="positionTrue">6
+            </div>
+            <div class="positionTrue">7
+            </div>
+            <div class="positionTrue">8
+            </div>
+            <div class="positionTrue">9
+            </div>
+            <div class="positionTrue">10
+            </div>
+        </div>
+    </div>
+    <div id="container">
+        <div id="simon">
+        </div>
+</body>
+<script>
+    let updateValue = function(element, val) {
+        element = (element == 'number') ? 'range' : 'number';
+        document.getElementById(element + "Difficulty").value = val;
+    }
+
+
+    let startGame = function() {
+        const playerName = document.getElementById("playerName").value;
+        const dificultad = document.getElementById("numberDifficulty").value;
+        let secuencia = randomNumber(dificultad);
+        //console.log(secuencia);
+        const botones = document.getElementById("simon");
+
+        for (let i = 0; i < botones.children.length; i++) {
+            let boton = botones.children[i];
+            addOnclick(boton.id);
+        }
+
+        playSecuencia(secuencia);
+
+    }
+
+
+    let randomNumber = function(quantity) {
+        arr = [];
+        let colores = ["green", "red", "yellow", "blue"];
+        for (let i = 0; i < quantity; i++) {
+            var randomnumber = Math.floor(Math.random() * 3);
+            arr[arr.length] = colores[randomnumber];
+        }
+        return arr;
+    }
+
+
+    let playSecuencia = function(secuencia) {
+        for (let valor of secuencia) {
+            buttonClick(valor);
+        }
+
+    }
+
+
+    let buttonClick = function(color) {
+        changeColor(color);
+        window.setTimeout(changeColor, 300, color);
+    }
+
+    let changeColor = function(color) {
+        console.log("cambio");
+        const boton = document.getElementById(color);
+        let classMeElement = boton.classList[0];
+        let newClass = isClassOn(boton.id) ? color + "Off" : color + "On";
+        boton.classList.remove(classMeElement);
+        boton.classList.add(newClass);
+
+    }
+
+    let isClassOn = function(color) {
+        return document.getElementById(color).classList[0].includes(color + "On");
+    }
+
+
+    let addOnclick = function(meId) {
+        let myElements = window.document.getElementById(meId);
+        myElements.addEventListener("click", function() {
+            buttonClick(this.id);
+        });
+    }
+</script>
+
+</html>
